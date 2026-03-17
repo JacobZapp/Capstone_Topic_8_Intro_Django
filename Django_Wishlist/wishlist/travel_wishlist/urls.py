@@ -3,4 +3,6 @@ from . import views # import the views file from the current directory, so we ca
 
 urlpatterns = [
     path('', views.place_list, name='place_list'), 
+    path('visited', views.places_visited, name='places_visited'), # visited page
+    path('about', views.about, name='about') # about page
 ]
