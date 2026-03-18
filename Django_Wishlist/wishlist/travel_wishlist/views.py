@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Place
 from .forms import NewPlaceForm
 # Create your views here.
@@ -28,3 +28,12 @@ def about(request):
 def places_visited(request):
     visited = Place.objects.filter(visited=True).order_by('name') # get all the places from the database, and store them in a variable called visited
     return render(request, 'travel_wishlist/visited.html', {'visited': visited})
+
+def place_was_visited(request, place_pk):
+    if request.method == 'POST':
+       # place = Place.objects.get(pk=place_pk) # get the place from the database that matches the primary key that was passed in the URL
+        place = get_object_or_404(Place, pk=place_pk) # get the place from the database that matches the primary key that was passed in the URL, and if it doesn't exist, return a 404 error
+        place.visited = True
+        place.save()
+
+    return redirect('place_list')    
