@@ -72,7 +72,7 @@ def place_details(request, place_pk):
         # If Get request, show Place info and form
         if place.visited:
             review_form = TripReviewForm(instance=place)
-            return render(request, 'travel_wishlist/place_detail.html', {'place': place}, {'review_form': review_form} )
+            return render(request, 'travel_wishlist/place_detail.html', {'place': place, 'review_form': review_form} )
         else:
             return render(request, 'travel_wishlist/place_detail.html', {'place': place} )
 

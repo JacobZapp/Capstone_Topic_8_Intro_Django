@@ -44,7 +44,6 @@
 
     <form action="{%  url 'place_was_visited' place.pk %}" method="POST">
         {% csrf_token %}
-
         <button type="submit" class="visited">Visited!</button> 
     </form>
 
